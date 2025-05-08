@@ -68,9 +68,8 @@ function Form1({ onSubmit }) {
       discrepancyImages: [] 
     };
   
-    // 3. Отправить на скрипт
     try {
-      const res = await fetch("https://scaner-form-proxy.onrender.com/form1", {
+      const res = await fetch("https://script.google.com/macros/s/AKfycbyTKZ4z840J6leWUKr6SukYQsuooRh4kINSsi7pwY2MCQ-yfpF0Ckqkg7Uwo3tfj2uf/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" }, 
         body: JSON.stringify(payload),
