@@ -70,7 +70,7 @@ function Form1({ onSubmit }) {
   
     // 3. Отправить на скрипт
     try {
-      const res = await fetch("http://localhost:3001/form1", {
+      const res = await fetch("https://scaner-form-proxy.onrender.com/form1", {
         method: "POST",
         headers: { "Content-Type": "application/json" }, 
         body: JSON.stringify(payload),
