@@ -52,7 +52,7 @@ function Form4() {
             const promises = files.map(file => {
                 return new Promise((resolve, reject) => {
                     const reader = new FileReader();
-                    reader.onload = () => resolve(reader.result.split(',')[1]); // без data:image/...;base64,
+                    reader.onload = () => resolve(reader.result.split(',')[1]);
                     reader.onerror = reject;
                     reader.readAsDataURL(file);
                 });
@@ -78,7 +78,7 @@ function Form4() {
         };
         console.log("Отправляемые данные:", payload);
         try {
-            const response = await fetch("http://localhost:3001/form4", {
+            const response = await fetch("https://scaner-form-proxy.onrender.com/form4", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json", 
