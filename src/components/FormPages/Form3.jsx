@@ -71,7 +71,7 @@ function Form3() {
         };
     
         try {
-            const res = await fetch("http://localhost:3001/form3", {
+            const res = await fetch("https://scaner-form-proxy.onrender.com/form3", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
