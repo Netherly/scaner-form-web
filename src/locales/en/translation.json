@@ -7,6 +7,7 @@
     "formsTitle": "Available Forms",
     "placeholderForm": "Your answer",
     "availableForms": "Available forms",
+    "selectUser": "Select user",
     "formNames": {
       "1": "Cargo receipt",
       "2": "Recording inconsistencies during cargo receipt",
