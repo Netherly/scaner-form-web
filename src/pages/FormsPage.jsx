@@ -1,8 +1,10 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 import { useAuth } from "../contexts/AuthContext";
 import FormHeader from "../components/FormHeader";
+import userPhoto from '../assets/user-photo.png';
 
 import "../styles/FormsPage.css"; 
 
@@ -18,16 +20,65 @@ function FormsPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const { clientName, formTypes } = useAuth();
+  const { 
+    clientName, 
+    formTypes, 
+    isAdmin, 
+    allUsers, 
+    selectedUser, 
+    selectUser,
+    photoUrl 
+  } = useAuth();
+
+  const defaultPhoto = userPhoto;
+
+  useEffect(() => {
+  console.log("useEffect срабатывает:", { isAdmin, selectedUser, clientName, allUsers });
+
+  if (isAdmin && !selectedUser && allUsers.length > 0) {
+    const matchingAdmin = allUsers.find(user => user.name === clientName);
+    if (matchingAdmin) {
+      console.log("Найден совпадающий пользователь:", matchingAdmin);
+      selectUser(matchingAdmin);
+    }
+  }
+}, [isAdmin, selectedUser, allUsers, clientName, selectUser]);
+
 
   const handleFormClick = (formType) => {
     navigate(`/form/${formType}`);
   };
 
   return (
-    <div className="forms-page">
-      <FormHeader title={clientName} />
-
+     <div className="forms-page">
+      <FormHeader 
+        title={selectedUser ? selectedUser.name : clientName} 
+      />
+      {isAdmin && (
+        <div className="forms-list">
+          <h3>{t("selectUser")}:</h3>
+          <div className="form-card-list">
+            {allUsers.map((user, index) => (
+              <div
+                key={index}
+                className={`form-card ${selectedUser?.login === user.login && selectedUser?.name === user.name ? "form-card--selected" : ""}`}
+                onClick={() => selectUser(user)}
+              >
+                <img 
+                  src={user.photoUrl || defaultPhoto} 
+                  alt={user.name}
+                  className="user-photo"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = defaultPhoto;
+                  }}
+                />
+                <span>{user.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
       <div className="forms-list">
         <h3>{t("availableForms")}:</h3>
         <div className="form-card-list">
