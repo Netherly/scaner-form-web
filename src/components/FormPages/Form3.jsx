@@ -7,7 +7,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import "../../styles/FormPages.css";
 
 function Form3() {
-    const { clientName } = useAuth();
+    const { clientName, isAdmin, selectedUser, } = useAuth();
     const { t } = useTranslation();
     const navigate = useNavigate();
 
@@ -58,15 +58,16 @@ function Form3() {
     
         const base64Photos = await toBase64Array(photos);
     
-        // Получаем дату в формате дд.мм.гггг
         const now = new Date();
         const formattedDate = `${String(now.getDate()).padStart(2, '0')}.${String(now.getMonth() + 1).padStart(2, '0')}.${now.getFullYear()}`;
     
         const payload = {
             formType: "form3",
-            client: clientName,
+            client: isAdmin && selectedUser ? selectedUser.name : clientName, 
             date: formattedDate,
             article,
+            location,
+            sscc,
             photos: base64Photos
         };
     
@@ -94,7 +95,6 @@ function Form3() {
     };    
 
     const handleConfirm = () => {
-        // Полная очистка формы
         setLocation("");
         setArticle("");
         setSSCC("");
