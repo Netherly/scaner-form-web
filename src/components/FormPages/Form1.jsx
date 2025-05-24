@@ -4,11 +4,10 @@ import { useTranslation } from "react-i18next";
 import FormHeader from "../../components/FormHeader";
 import { useAuth } from "../../contexts/AuthContext";
 
-
 import "../../styles/FormPages.css";
 
 function Form1({ onSubmit }) {
-  const { clientName } = useAuth();
+  const { clientName, isAdmin, selectedUser, } = useAuth();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [number, setNumber] = useState("");
@@ -61,13 +60,12 @@ function Form1({ onSubmit }) {
 
     const payload = {
       type: "form1",
-      client: clientName, 
+      client: isAdmin && selectedUser ? selectedUser.name : clientName, 
       invoice: number,
       sealImages: sealBase64,
       carImages: carBase64,
       discrepancyImages: [] 
     };
-  
     try {
       const res = await fetch("https://scaner-form-proxy.onrender.com/form1", {
         method: "POST",
@@ -80,7 +78,6 @@ function Form1({ onSubmit }) {
       console.log("Результат:", result);
   
       alert("Форма успішно відправлена!");
-      navigate("/forms");
     } catch (err) {
       console.error("Помилка при відправці:", err);
       alert("Сталася помилка під час відправки форми.");
@@ -88,7 +85,12 @@ function Form1({ onSubmit }) {
       setIsSubmitting(false); 
     }
   };
-  
+  const handleConfirm = () => {
+    setNumber("");
+    setSealPhotos([]);
+    setCarPhotos([]);
+    navigate("/forms");
+  };
 
   return (
     <form onSubmit={handleSubmit} className="submit-form-container">
@@ -140,9 +142,19 @@ function Form1({ onSubmit }) {
         {renderPreview(carPhotos, setCarPhotos)}
       </div>
 
-      <button type="submit" className="submit-button-single" disabled={isSubmitting}>
-        {isSubmitting ? t("form1.sending") : t("form1.submit")}
-      </button>
+      <div className="form-buttons">
+        <button type="submit" className="submit-button" disabled={isSubmitting}>
+          {isSubmitting ? t("form1.sending") : t("form2.submit")}
+        </button>
+        <button
+          type="button"
+          onClick={handleConfirm}
+          className="submit-button"
+          disabled={isSubmitting}
+        >
+          {t("form2.confirm")}
+        </button>
+      </div>
 
     </form>
   );
