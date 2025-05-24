@@ -10,7 +10,7 @@ function Form4() {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const { reasons } = useAuth();
-    const { clientName } = useAuth();
+    const { clientName, isAdmin, selectedUser, } = useAuth();
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const [number, setNumber] = useState("");
@@ -66,7 +66,7 @@ function Form4() {
     
         const payload = {
             formType: "form4",
-            client: clientName,
+            client: isAdmin && selectedUser ? selectedUser.name : clientName, 
             date: formattedDate,
             number,
             article,
@@ -76,7 +76,6 @@ function Form4() {
             reason,
             photos: base64Photos,
         };
-        console.log("Отправляемые данные:", payload);
         try {
             const response = await fetch("https://scaner-form-proxy.onrender.com/form4", {
                 method: "POST",
