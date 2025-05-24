@@ -7,12 +7,19 @@ export const AuthProvider = ({ children }) => {
   const [formTypes, setFormTypes] = useState([]);
   const [reasons, setReasons] = useState([]);
   const [formLinks, setFormLinks] = useState({});
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [photoUrl, setPhotoUrl] = useState(null);
+  const [allUsers, setAllUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
 
-  const login = (name, types, reasonsList = [], links) => {
+  const login = (name, types, reasonsList = [], links, admin = false, photo = null, users = []) => {
     setClientName(name);
     setFormTypes(types);
     setReasons(reasonsList);
     setFormLinks(links);
+    setIsAdmin(admin);
+    setPhotoUrl(photo);
+    setAllUsers(users);
   };
 
   const logout = () => {
@@ -20,10 +27,31 @@ export const AuthProvider = ({ children }) => {
     setFormTypes([]);
     setReasons([]);
     setFormLinks({});
+    setIsAdmin(false);
+    setPhotoUrl(null);
+    setAllUsers([]);
+    setSelectedUser(null);
+  };
+
+  const selectUser = (user) => {
+    setSelectedUser(user);
+    setFormTypes(user.formTypes);
   };
 
   return (
-    <AuthContext.Provider value={{ clientName, formTypes, reasons, formLinks, login, logout }}>
+    <AuthContext.Provider value={{ 
+      clientName, 
+      formTypes, 
+      reasons, 
+      formLinks, 
+      isAdmin, 
+      photoUrl, 
+      allUsers, 
+      selectedUser,
+      selectUser,
+      login, 
+      logout 
+    }}>
       {children}
     </AuthContext.Provider>
   );
