@@ -7,7 +7,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import "../../styles/FormPages.css";
 
 function Form2() {
-  const { clientName } = useAuth();
+  const { clientName, isAdmin, selectedUser, } = useAuth();
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -60,7 +60,7 @@ function Form2() {
 
     const payload = {
       type: "form2",
-      client: clientName,
+      client: isAdmin && selectedUser ? selectedUser.name : clientName,
       invoice: number,
       article: article,
       sscc: sscc,
