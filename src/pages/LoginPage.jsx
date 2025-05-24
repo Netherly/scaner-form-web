@@ -23,7 +23,7 @@ function LoginPage() {
             const data = await res.json();
 
             if (data.success) {
-                loginToContext(data.clientName, data.formTypes, data.reasons, data.formLinks); 
+                loginToContext(data.clientName, data.formTypes, data.reasons, data.formLinks, data.isAdmin, data.photoUrl, data.allUsers); 
                 navigate("/forms");
             } else {
                 setError(data.message);
