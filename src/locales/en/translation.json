@@ -1,0 +1,59 @@
+{
+    "login": "Login",
+    "loginTitle": "Authorization",
+    "password": "Password",
+    "enter": "Log In",
+    "loading": "Loading...",
+    "formsTitle": "Available Forms",
+    "placeholderForm": "Your answer",
+    "availableForms": "Available forms",
+    "selectUser": "Select user",
+    "formNames": {
+      "1": "Cargo receipt",
+      "2": "Recording inconsistencies during cargo receipt",
+      "3": "Detecting inconsistencies during product storage",
+      "4": "Detecting inconsistencies during copacking operations"
+    },
+    "form1": {
+      "title": "Cargo Receipt",
+      "number": "Receipt Number",
+      "sealPhotos": "Seal Photos",
+      "carPhotos": "Vehicle Photos",
+      "submit": "Submit",
+      "sending": "Sending...",
+      "receiptNumber": "Reception number",
+      "addPhoto": "Add Photo"
+    },
+    "form2": {
+      "title": "Fixing Discrepancies upon Receipt",
+      "number": "Receipt Number",
+      "article": "Article",
+      "sscc": "Pallet SSCC",
+      "photos": "Discrepancy Photos",
+      "submit": "Send",
+      "ssccPhotos": "Pallet SSCC",
+      "confirm": "Confirm"
+    },
+    "form3": {
+      "title": "Detecting Storage Discrepancies",
+      "location": "Discrepancy Location",
+      "article": "Article",
+      "sscc": "Pallet SSCC (optional)",
+      "photos": "Discrepancy Photos",
+      "submit": "Submit"
+    },
+    "form4": {
+      "title": "Detecting Discrepancies during Copacking",
+      "number": "Receipt Number (optional)",
+      "article": "Article",
+      "batch": "Lot/Batch",
+      "sscc": "Pallet SSCC",
+      "qty": "Quantity",
+      "reason": "Discrepancy Reason",
+      "reason_damage": "Damaged",
+      "reason_wrong": "Wrong Item",
+      "photos": "Discrepancy Photos",
+      "submit": "Submit"
+    }
+  }
+  

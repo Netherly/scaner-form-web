@@ -1,0 +1,125 @@
+.submit-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 650px;
+}
+.form-item{
+    padding: 20px 22px 20px 22px;
+    
+    max-height: 500px;
+    border: 1px solid #DADCE0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    
+    flex-wrap: wrap;
+}
+.form-item label:not(.custom_file_button){
+    margin-bottom: 20px;
+    line-height: 32px;
+    font-size: 18px;
+}
+.form-input{
+    margin-bottom: 12px;
+    border-style: none;
+    border-bottom: 1px solid #DADCE0;
+    height: 24px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: .2px;
+    line-height: 20px;
+    color: rgb(32, 33, 36);
+    transition: border-color 0.5s ease;
+    appearance: none;        
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 20px;
+}
+.form-input:hover,
+.form-input:focus {
+    border-bottom: 1px solid #673AB7; 
+    outline: none; 
+}
+.file-button {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    padding: 8px 12px;
+    background-color: #7044bb;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    transition: background-color 0.3s;
+    width: 105px;
+}
+.file-button:hover {
+    background-color: #7044bb;
+}
+.preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.preview-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.preview-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 2px red;
+}
+.submit-button {
+    margin-right: 8px;
+    background-color: #673AB7; 
+    color: #F3EDFB; 
+    height: 36px;
+    border: 1px solid #DADCE0; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    font-weight: 500; 
+    cursor: pointer; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+    margin-bottom: 16px;
+    padding: 8px;
+}
+.submit-button-single {
+    margin-right: 8px;
+    background-color: #673AB7; 
+    color: #F3EDFB; 
+    height: 36px;
+    width: 108px;
+    border: 1px solid #DADCE0; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    font-weight: 500; 
+    cursor: pointer; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+    margin-bottom: 16px;
+    padding: 8px;
+}
+.submit-button:hover {
+    background-color: #7044bb; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+}
+
+.submit-button:focus {
+    outline: none; 
+    box-shadow: 0 0 0 3px rgba(103, 58, 183, 0.3); 
+}
+.user-photo {
+    width: 80px;
+    height: 80px;
+}
+.form-card--selected {
+    border: 1px solid #a235d4;
+}
