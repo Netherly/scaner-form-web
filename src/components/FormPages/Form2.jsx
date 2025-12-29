@@ -7,7 +7,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import "../../styles/FormPages.css";
 
 function Form2() {
-  const { clientName, isAdmin, selectedUser, } = useAuth();
+  const { clientName, isAdmin, selectedUser, folderUrls } = useAuth();
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -65,6 +65,7 @@ function Form2() {
       article: article,
       sscc: sscc,
       discrepancyImages: base64Photos,
+      folderUrls: folderUrls || {}
     };
 
     try {

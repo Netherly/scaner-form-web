@@ -7,7 +7,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import "../../styles/FormPages.css";
 
 function Form1({ onSubmit }) {
-  const { clientName, isAdmin, selectedUser, } = useAuth();
+  const { clientName, isAdmin, selectedUser, folderUrls } = useAuth();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [number, setNumber] = useState("");
@@ -64,8 +64,10 @@ function Form1({ onSubmit }) {
       invoice: number,
       sealImages: sealBase64,
       carImages: carBase64,
-      discrepancyImages: [] 
+      discrepancyImages: [],
+      folderUrls: folderUrls || {}
     };
+    
     try {
       const res = await fetch("https://scaner-form-proxy.onrender.com/form1", {
         method: "POST",
@@ -85,6 +87,7 @@ function Form1({ onSubmit }) {
       setIsSubmitting(false); 
     }
   };
+  
   const handleConfirm = () => {
     setNumber("");
     setSealPhotos([]);

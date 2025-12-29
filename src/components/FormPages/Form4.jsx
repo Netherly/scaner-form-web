@@ -10,7 +10,7 @@ function Form4() {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const { reasons } = useAuth();
-    const { clientName, isAdmin, selectedUser, } = useAuth();
+    const { clientName, isAdmin, selectedUser, folderUrls } = useAuth();
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const [number, setNumber] = useState("");
@@ -75,6 +75,7 @@ function Form4() {
             quantity: qty,
             reason,
             photos: base64Photos,
+            folderUrls: folderUrls || {}
         };
         try {
             const response = await fetch("https://scaner-form-proxy.onrender.com/form4", {
