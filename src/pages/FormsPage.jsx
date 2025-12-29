@@ -27,22 +27,24 @@ function FormsPage() {
     allUsers, 
     selectedUser, 
     selectUser,
-    photoUrl 
+    photoUrl,
+    folderUrls
   } = useAuth();
 
   const defaultPhoto = userPhoto;
 
   useEffect(() => {
-  console.log("useEffect срабатывает:", { isAdmin, selectedUser, clientName, allUsers });
+    console.log("useEffect срабатывает:", { isAdmin, selectedUser, clientName, allUsers });
+    console.log("folderUrls:", folderUrls);
 
-  if (isAdmin && !selectedUser && allUsers.length > 0) {
-    const matchingAdmin = allUsers.find(user => user.name === clientName);
-    if (matchingAdmin) {
-      console.log("Найден совпадающий пользователь:", matchingAdmin);
-      selectUser(matchingAdmin);
+    if (isAdmin && !selectedUser && allUsers.length > 0) {
+      const matchingAdmin = allUsers.find(user => user.name === clientName);
+      if (matchingAdmin) {
+        console.log("Найден совпадающий пользователь:", matchingAdmin);
+        selectUser(matchingAdmin);
+      }
     }
-  }
-}, [isAdmin, selectedUser, allUsers, clientName, selectUser]);
+  }, [isAdmin, selectedUser, allUsers, clientName, selectUser, folderUrls]);
 
 
   const handleFormClick = (formType) => {
