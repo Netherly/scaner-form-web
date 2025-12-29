@@ -71,13 +71,13 @@ function Form1({ onSubmit }) {
     try {
       const res = await fetch("https://script.google.com/macros/s/AKfycbyF84i0Hi8NgvMEEtChvIbX9EoMkpk6B6Bf6Lq5tznXlb4ZVk2egQZ_oK_m2-aPvqUgxw/exec", {
         method: "POST",
-        headers: { "Content-Type": "application/json" }, 
+        mode: "no-cors",
         body: JSON.stringify(payload),
       });
       
-  
-      const result = await res.json();
-      console.log("Результат:", result);
+      // При использовании no-cors режима, ответ будет opaque (непрозрачным)
+      // и мы не сможем прочитать данные, но запрос будет отправлен
+      console.log("Запрос відправлено");
   
       alert("Форма успішно відправлена!");
     } catch (err) {
