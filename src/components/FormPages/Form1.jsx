@@ -69,15 +69,15 @@ function Form1({ onSubmit }) {
     };
     
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbyF84i0Hi8NgvMEEtChvIbX9EoMkpk6B6Bf6Lq5tznXlb4ZVk2egQZ_oK_m2-aPvqUgxw/exec", {
+      const res = await fetch("https://scaner-form-proxy.onrender.com/form1", {
         method: "POST",
-        mode: "no-cors",
+        headers: { "Content-Type": "application/json" }, 
         body: JSON.stringify(payload),
       });
       
-      // При использовании no-cors режима, ответ будет opaque (непрозрачным)
-      // и мы не сможем прочитать данные, но запрос будет отправлен
-      console.log("Запрос відправлено");
+  
+      const result = await res.json();
+      console.log("Результат:", result);
   
       alert("Форма успішно відправлена!");
     } catch (err) {

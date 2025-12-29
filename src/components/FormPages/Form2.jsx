@@ -69,7 +69,7 @@ function Form2() {
     };
 
     try {
-      const res = await fetch("https://script.google.com/macros/s/AKfycbyF84i0Hi8NgvMEEtChvIbX9EoMkpk6B6Bf6Lq5tznXlb4ZVk2egQZ_oK_m2-aPvqUgxw/exec", {
+      const res = await fetch("https://scaner-form-proxy.onrender.com/form2", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

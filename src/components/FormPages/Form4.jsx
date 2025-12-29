@@ -78,7 +78,7 @@ function Form4() {
             folderUrls: folderUrls || {}
         };
         try {
-            const response = await fetch("https://script.google.com/macros/s/AKfycbyF84i0Hi8NgvMEEtChvIbX9EoMkpk6B6Bf6Lq5tznXlb4ZVk2egQZ_oK_m2-aPvqUgxw/exec", {
+            const response = await fetch("https://scaner-form-proxy.onrender.com/form4", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json", 
